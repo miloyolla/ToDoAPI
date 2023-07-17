@@ -11,6 +11,8 @@ namespace ToDo.Domain.Models
         public int Id { get; private set; }
         public string Nome { get; private set; }
         public int StatusId { get; private set; }
+        public User User { get; private set; }
+        public int UserId { get; private set; }
 
         public Tarefa() { }
 

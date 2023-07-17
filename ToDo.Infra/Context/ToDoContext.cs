@@ -14,6 +14,7 @@ namespace ToDo.Infra.Context
         public ToDoContext(DbContextOptions<ToDoContext> options) : base (options) { }
 
         public DbSet<Tarefa> Tarefas { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

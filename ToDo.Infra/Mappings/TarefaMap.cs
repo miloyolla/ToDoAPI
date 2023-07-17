@@ -26,6 +26,10 @@ namespace ToDo.Infra.Mappings
             builder.Property(t => t.StatusId)
                 .HasColumnType("int")
                 .IsRequired();
+
+            builder.HasOne<User>(t => t.User)
+                .WithMany(u => u.Tarefas)
+                .HasForeignKey(t => t.UserId);
         }
     }
 }
