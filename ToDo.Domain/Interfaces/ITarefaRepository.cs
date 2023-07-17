@@ -19,5 +19,6 @@ namespace ToDo.Domain.Interfaces
         IEnumerable<TarefaDTO> BuscarTarefasAtrasadas();
         IEnumerable<TarefaDTO> BuscarTarefasCanceladas();
         IEnumerable<TarefaDTO> BuscarTarefasRealizadas();
+        void DeletarTarefa(int tarefaId);
     }
 }

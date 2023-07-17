@@ -236,5 +236,26 @@ namespace ToDo.API.Controllers
                 return BadRequest("Status não pode ser nulo.");
             }
         }
+
+        [HttpDelete]
+        [Route(nameof(TarefaController.Deletar))]
+        public async Task<dynamic> Deletar(int tarefaId)
+        {
+            try
+            {
+                var tarefa = _tarefaRepository.GetById(tarefaId);
+
+                if (tarefa != null)
+                {
+                    _tarefaRepository.DeletarTarefa(tarefaId);
+                    return Ok("Tarefa deletada com sucesso!");                    
+                }
+                throw new Exception();
+            }
+            catch (Exception e)
+            {
+                return NotFound("Tarefa não encontrada.");
+            }
+        }
     }
 }

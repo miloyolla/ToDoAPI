@@ -109,5 +109,11 @@ namespace ToDo.Infra.Repositories
                 StatusId = t.StatusId
             });
         }
+
+        public void DeletarTarefa(int tarefaId)
+        {
+            Remove(tarefaId);
+            SaveChanges();
+        }
     }
 }
