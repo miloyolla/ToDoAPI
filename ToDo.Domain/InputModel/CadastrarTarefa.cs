@@ -10,5 +10,6 @@ namespace ToDo.Domain.InputModel
     {
         public string Nome { get; set; }
         public int StatusId { get; set; }
+        public int UserId { get; set; }
     }
 }

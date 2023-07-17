@@ -28,7 +28,7 @@ namespace ToDo.API.Controllers
             {
                 if (!String.IsNullOrEmpty(tarefa.Nome))
                 {
-                    _tarefaRepository.CadastrarTarefa(tarefa.Nome, tarefa.StatusId);
+                    _tarefaRepository.CadastrarTarefa(tarefa.Nome, tarefa.StatusId, tarefa.UserId);
                     return Ok("Cadastro realizado com sucesso!");
                 }
                 else throw new Exception();
@@ -250,6 +250,22 @@ namespace ToDo.API.Controllers
                     _tarefaRepository.DeletarTarefa(tarefaId);
                     return Ok("Tarefa deletada com sucesso!");                    
                 }
+                throw new Exception();
+            }
+            catch (Exception e)
+            {
+                return NotFound("Tarefa não encontrada.");
+            }
+        }
+
+        [HttpGet]
+        [Route(nameof(TarefaController.BuscarPorUser))]
+        public async Task<dynamic> BuscarPorUser(int userId)
+        {
+            try
+            {
+                var tarefas = _tarefaRepository.BuscarTarefaPorUser(userId);
+                if (tarefas.Count() > 0) return Ok(tarefas);
                 throw new Exception();
             }
             catch (Exception e)

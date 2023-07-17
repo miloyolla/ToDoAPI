@@ -16,10 +16,11 @@ namespace ToDo.Domain.Models
 
         public Tarefa() { }
 
-        public Tarefa(string nome, int statusId)
+        public Tarefa(string nome, int statusId, int userId)
         {
             Nome = nome;
             StatusId = statusId;
+            UserId = userId;
         }
 
         public void Atualizar(string nome, int statusId)

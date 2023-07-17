@@ -10,7 +10,7 @@ namespace ToDo.Domain.Interfaces
 {
     public interface ITarefaRepository: IBaseRepository<Tarefa>
     {
-        TarefaDTO CadastrarTarefa(string nome, int statusId);
+        TarefaDTO CadastrarTarefa(string nome, int statusId, int userId);
         TarefaDTO AtualizarTarefa(int tarefaId);
         TarefaDTO BuscarTarefaPorId(int tarefaId);
         IEnumerable<TarefaDTO> BuscarTarefaPorNome(string tarefaNome);
@@ -20,5 +20,6 @@ namespace ToDo.Domain.Interfaces
         IEnumerable<TarefaDTO> BuscarTarefasCanceladas();
         IEnumerable<TarefaDTO> BuscarTarefasRealizadas();
         void DeletarTarefa(int tarefaId);
+        IEnumerable<TarefaDTO> BuscarTarefaPorUser(int userID);
     }
 }

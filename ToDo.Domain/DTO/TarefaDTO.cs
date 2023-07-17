@@ -11,5 +11,6 @@ namespace ToDo.Domain.DTO
         public int Id { get; set; }
         public string Nome { get; set; }
         public int StatusId { get; set; }
+        public int UserId { get; set; }
     }
 }

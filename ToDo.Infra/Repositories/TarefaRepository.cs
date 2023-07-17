@@ -13,9 +13,9 @@ namespace ToDo.Infra.Repositories
         }
 
 
-        public TarefaDTO CadastrarTarefa(string nome, int statusId)
+        public TarefaDTO CadastrarTarefa(string nome, int statusId, int userId)
         {
-            var tarefa = new Tarefa(nome, statusId);
+            var tarefa = new Tarefa(nome, statusId, userId);
             Add(tarefa);
             SaveChanges();
 
@@ -23,7 +23,8 @@ namespace ToDo.Infra.Repositories
             {
                 Id = t.Id,
                 Nome = t.Nome,
-                StatusId = t.StatusId
+                StatusId = t.StatusId,
+                UserId = t.UserId
             }).FirstOrDefault(); ;
         }
 
@@ -36,7 +37,8 @@ namespace ToDo.Infra.Repositories
             {
                 Id = t.Id,
                 Nome = t.Nome,
-                StatusId = t.StatusId
+                StatusId = t.StatusId,
+                UserId = t.UserId
             }).FirstOrDefault();
 
         }
@@ -47,7 +49,8 @@ namespace ToDo.Infra.Repositories
             {
                 Id = t.Id,
                 Nome = t.Nome,
-                StatusId = t.StatusId
+                StatusId = t.StatusId,
+                UserId = t.UserId
             }).FirstOrDefault();
         }
 
@@ -57,7 +60,8 @@ namespace ToDo.Infra.Repositories
             {
                 Id = t.Id,
                 Nome = t.Nome,
-                StatusId = t.StatusId
+                StatusId = t.StatusId,
+                UserId = t.UserId
             });
         }
 
@@ -67,7 +71,8 @@ namespace ToDo.Infra.Repositories
             {
                 Id = t.Id,
                 Nome = t.Nome,
-                StatusId = t.StatusId
+                StatusId = t.StatusId,
+                UserId = t.UserId
             });
         }
 
@@ -77,7 +82,8 @@ namespace ToDo.Infra.Repositories
             {
                 Id = t.Id,
                 Nome = t.Nome,
-                StatusId = t.StatusId
+                StatusId = t.StatusId,
+                UserId = t.UserId
             });
         }
 
@@ -87,7 +93,8 @@ namespace ToDo.Infra.Repositories
             {
                 Id = t.Id,
                 Nome = t.Nome,
-                StatusId = t.StatusId
+                StatusId = t.StatusId,
+                UserId = t.UserId
             });
         }
 
@@ -97,7 +104,8 @@ namespace ToDo.Infra.Repositories
             {
                 Id = t.Id,
                 Nome = t.Nome,
-                StatusId = t.StatusId
+                StatusId = t.StatusId,
+                UserId = t.UserId
             });
         }
         public IEnumerable<TarefaDTO> BuscarTarefasRealizadas()
@@ -106,7 +114,8 @@ namespace ToDo.Infra.Repositories
             {
                 Id = t.Id,
                 Nome = t.Nome,
-                StatusId = t.StatusId
+                StatusId = t.StatusId,
+                UserId = t.UserId
             });
         }
 
@@ -114,6 +123,17 @@ namespace ToDo.Infra.Repositories
         {
             Remove(tarefaId);
             SaveChanges();
+        }
+
+        public IEnumerable<TarefaDTO> BuscarTarefaPorUser(int userId)
+        {
+            return Db.Tarefas.Where(t => t.UserId == userId).Select(t => new TarefaDTO
+            {
+                Id = t.Id,
+                Nome = t.Nome,
+                StatusId = t.StatusId,
+                UserId = t.UserId
+            });
         }
     }
 }
