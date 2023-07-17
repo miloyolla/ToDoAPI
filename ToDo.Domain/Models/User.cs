@@ -15,5 +15,11 @@ namespace ToDo.Domain.Models
         public ICollection<Tarefa> Tarefas { get; private set; }
 
         public User() { }
+        public User(string userName, byte[] hash, byte[] salt)
+        {
+            Username = userName;
+            PasswordHash = hash;
+            PasswordSalt = salt;
+        }
     }
 }
